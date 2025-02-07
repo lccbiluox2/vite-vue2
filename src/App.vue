@@ -12,7 +12,7 @@
     const fetchData = async () => {
         try {
             // 修改这里的路径为 /api/example
-            const response = await request.get('/api/example');
+            const response = await request.get('/example');
             console.log('获取数据成功:', response.data);
         } catch (error) {
             console.error('获取数据失败:', error.message);
@@ -48,18 +48,6 @@
 
 <template>
     <div>
-        <el-button type="primary">Primary</el-button>
-        <el-button type="success">Success</el-button>
-        <el-button type="info">Info</el-button>
-        <el-button type="warning">Warning</el-button>
-        <el-button type="danger">Danger</el-button>
-
-        <el-button type="primary" :icon="Plus">Danger</el-button>
-
-        <div class="example-pagination-block">
-            <div class="example-demonstration">When you have few pages</div>
-            <el-pagination layout="prev, pager, next" :total="50" />
-        </div>
         <router-view></router-view> <!-- 显示匹配的组件 -->
     </div>
 </template>

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // 获取环境变量中的API基础URL
-const URL = import.meta.env.VITE_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const config = {
-    baseURL: process.env.NODE_ENV === 'development' ? '' : URL, // 在开发环境中不使用基础URL
+    baseURL: API_BASE_URL, // 使用环境变量定义的基础URL
     timeout: 20000, // 20 seconds
     withCredentials: true,
 };
@@ -19,7 +19,7 @@ class RequestHttp {
         this.service.interceptors.request.use(
             config => ({
                 ...config,
-                headers: { Authorization: 'Bearer ' + 'token' },
+                headers: { Authorization: 'Bearer ' + (localStorage.getItem('token') || '') }, // 使用本地存储的token
             }),
             error => Promise.reject(error)
         );
@@ -29,12 +29,13 @@ class RequestHttp {
             response => {
                 const { data } = response;
                 if (data.code === 600) localStorage.setItem('token', '');
-                if (data.code && data.code !== 200) ElMessage.error(data);
+                if (data.code && data.code !== 200) ElMessage.error(data.message || '未知错误');
                 return data;
             },
             error => {
                 if (error.response) this.handleCode(error.response.status);
                 if (!window.navigator.onLine) ElMessage.error('网络请求失败');
+                return Promise.reject(error);
             }
         );
     }

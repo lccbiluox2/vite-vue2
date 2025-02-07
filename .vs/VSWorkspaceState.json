@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\mock",
     "\\src",
+    "\\src\\api",
+    "\\src\\api\\user",
+    "\\src\\store",
+    "\\src\\store\\modules",
     "\\src\\views",
     "\\src\\views\\login"
   ],
