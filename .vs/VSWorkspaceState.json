@@ -1,14 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
     "\\src",
-    "\\src\\api",
-    "\\src\\api\\user",
-    "\\src\\store",
+    "\\src\\layout",
+    "\\src\\layout\\logo",
     "\\src\\store\\modules",
+    "\\src\\styles",
     "\\src\\views",
     "\\src\\views\\login"
   ],
-  "SelectedNode": "\\src\\views\\login\\index.vue",
+  "SelectedNode": "\\src\\layout\\logo\\logo.vue",
   "PreviewInSolutionExplorer": false
 }

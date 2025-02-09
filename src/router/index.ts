@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/',
-    component: () => import('@/views/home/index.vue'), // 动态导入主页组件
+    component: () => import('@/layout/layout.vue'), // 动态导入主页组件
     name: 'home', // 命名路由
   },
   {

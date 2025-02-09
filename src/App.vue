@@ -47,12 +47,31 @@
 
 
 <template>
-    <div>
+    <div id="app" style="width: 100%; height: 100%; margin: 0; padding: 0;">
         <router-view></router-view> <!-- 显示匹配的组件 -->
     </div>
 </template>
 
 <style scoped>
+
+/* 确保html和body也占满整个视口 */
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: red;
+    }
+
+/* 覆盖默认的 #app 样式 */
+#app {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:red;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

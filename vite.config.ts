@@ -1,10 +1,10 @@
-import { defineConfig, UserConfigExport, ConfigEnv } from 'vite';
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 import { viteMockServe } from 'vite-plugin-mock';
 
-export default defineConfig(({ command }: ConfigEnv): UserConfigExport => ({
+export default defineConfig(({ command }) => ({
     plugins: [
         vue(),
         vueJsx(),
@@ -18,6 +18,13 @@ export default defineConfig(({ command }: ConfigEnv): UserConfigExport => ({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src') // 确保路径别名指向 src 目录
+        }
+    },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@import "@/styles/variables.scss";` // 使用别名 @ 来简化路径
+            }
         }
     }
 }));
