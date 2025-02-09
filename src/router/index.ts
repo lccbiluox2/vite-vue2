@@ -9,6 +9,12 @@ const routes = [
     path: '/login',
     component: () => import('@/views/login/index.vue'), // 动态导入登录页面组件
     name: 'login', // 命名路由
+    children:[
+            {
+                path: "/home",
+                component:()=> import('@/views/home/home.vue')
+            }
+        ]
   },
   {
     path: '/',
