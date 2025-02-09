@@ -1,21 +1,17 @@
-<!-- src/layout/logo/logo.vue -->
 <template>
     <div class="logo">
-        <img src="../../../public/logo.jpg" alt="Logo" />
-        <p>硅谷甄选运营平台</p>
+        <img :src="appConfig.logo" :alt="appConfig.title" />
+        <p>{{ appConfig.title }}</p>
     </div>
 </template>
 
 <script setup lang="ts">
-    // 如果有需要在这里添加的逻辑，可以在此处编写
-</script>
 
-<script lang="ts">
     import { defineComponent } from 'vue';
+    import appConfig from '@/AppSetting'; // 正确导入配置对象
 
-    export default defineComponent({
-        name: 'Logo'
-    });
+
+
 </script>
 
 <style scoped lang="scss">
@@ -35,7 +31,7 @@
 
         p {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 10px;
         }
     }
 </style>

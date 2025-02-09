@@ -5,11 +5,8 @@
     "\\src",
     "\\src\\layout",
     "\\src\\layout\\logo",
-    "\\src\\store\\modules",
-    "\\src\\styles",
-    "\\src\\views",
     "\\src\\views\\login"
   ],
-  "SelectedNode": "\\src\\layout\\logo\\logo.vue",
+  "SelectedNode": "\\src\\AppSetting.ts",
   "PreviewInSolutionExplorer": false
 }
