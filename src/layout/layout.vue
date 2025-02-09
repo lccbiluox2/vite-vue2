@@ -2,7 +2,7 @@
   <div class="layout_container">
     <!-- 左侧菜单 -->
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
-        <Logo></Logo>
+      <Logo></Logo>
       <h2>菜单</h2>
       <!-- 这里可以放置你的菜单组件 -->
     </el-aside>
@@ -32,8 +32,6 @@ const baseMenuWidth = ref('200px'); // 左侧菜单宽度
 </script>
 
 <style scoped lang="scss">
-
-
 .layout_container {
     display: flex;
     height: 100vh; /* 确保容器高度为视口高度 */
@@ -46,6 +44,7 @@ const baseMenuWidth = ref('200px'); // 左侧菜单宽度
   flex-direction: column;
   width: calc(100% - v-bind(baseMenuWidth)); /* 根据左侧菜单宽度动态调整宽度 */
   height: 100%; /* 占满剩余空间 */
+  background-color: aqua; /* 调试用背景颜色 */
 }
 
 .layout_slider {
