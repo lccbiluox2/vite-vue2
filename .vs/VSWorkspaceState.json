@@ -4,8 +4,12 @@
     "\\public",
     "\\src",
     "\\src\\layout",
-    "\\src\\layout\\logo"
+    "\\src\\layout\\logo",
+    "\\src\\layout\\menu",
+    "\\src\\styles",
+    "\\src\\views",
+    "\\src\\views\\home"
   ],
-  "SelectedNode": "\\src\\App.vue",
+  "SelectedNode": "\\src\\layout\\layout.vue",
   "PreviewInSolutionExplorer": false
 }

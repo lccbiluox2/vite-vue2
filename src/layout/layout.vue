@@ -2,7 +2,12 @@
   <div class="layout_container">
     <!-- 左侧菜单 -->
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
-      <Logo></Logo>
+        <Logo></Logo>
+        <el-scrollbar class="scrollbar">
+            <el-menu background-color="red" text-color="white">
+                <Menu></Menu>
+            </el-menu>
+        </el-scrollbar>
       <h2>菜单</h2>
       <!-- 这里可以放置你的菜单组件 -->
     </el-aside>
@@ -26,6 +31,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Logo from '@/layout/logo/logo.vue'; // 直接导入整个组件
+import Menu from '@/layout/menu/leftMenuList.vue'; // 导入菜单组件
 
 // 示例变量，实际应用中可以从配置或状态管理中获取
 const baseMenuWidth = ref('200px'); // 左侧菜单宽度
@@ -47,10 +53,15 @@ const baseMenuWidth = ref('200px'); // 左侧菜单宽度
   background-color: aqua; /* 调试用背景颜色 */
 }
 
-.layout_slider {
-  background-color: $base-menu-background; /* 使用正确的颜色变量 */
-  transition: width .3s; /* 添加过渡效果 */
-}
+    .layout_slider {
+        background-color: $base-menu-background; /* 使用正确的颜色变量 */
+        transition: width .3s; /* 添加过渡效果 */
+
+        .scrollbar {
+            width: 100%;
+            height: calc(100vh - $base-menu-logo-height );
+        }
+    }
 
 .layout_tabbar {
   background-color: cyan;
