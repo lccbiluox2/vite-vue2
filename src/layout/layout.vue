@@ -2,27 +2,24 @@
   <div class="layout_container">
     <!-- 左侧菜单 -->
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
-        <Logo></Logo>
-        <el-scrollbar class="scrollbar">
-            <el-menu background-color="#333" text-color="white">
-                <Menu></Menu>
-            </el-menu>
-        </el-scrollbar>
-      <h2>菜单</h2>
-      <!-- 这里可以放置你的菜单组件 -->
+      <Logo></Logo>
+      <el-scrollbar class="scrollbar">
+        <el-menu background-color="#333" text-color="white">
+          <Menu :menuList="userStore.constantRoutes"></Menu>
+        </el-menu>
+      </el-scrollbar>
+      <h4>菜单</h4>
     </el-aside>
 
     <el-container class="main_container">
       <!-- 顶部导航（二级菜单） -->
       <el-header class="layout_tabbar">
         <h2>二级菜单</h2>
-        <!-- 这里可以放置你的二级菜单组件 -->
       </el-header>
 
       <!-- 内容展示区域 -->
       <el-main class="layout_main">
         <h2>内容展示区域</h2>
-        <!-- 这里可以放置你的主要内容 -->
       </el-main>
     </el-container>
   </div>
@@ -32,17 +29,21 @@
 import { ref } from 'vue';
 import Logo from '@/layout/logo/logo.vue'; // 直接导入整个组件
 import Menu from '@/layout/menu/leftMenuList.vue'; // 导入菜单组件
+import { useUserStore } from '@/store/modules/user';
 
 // 示例变量，实际应用中可以从配置或状态管理中获取
 const baseMenuWidth = ref('200px'); // 左侧菜单宽度
+
+// 使用 Pinia 状态管理中的 user store
+const userStore = useUserStore();
 </script>
 
 <style scoped lang="scss">
 .layout_container {
-    display: flex;
-    height: 100vh; /* 确保容器高度为视口高度 */
-    width: 100%; /* 使用百分比确保宽度占据整个父元素的宽度 */
-    background-color: #333;; /* 调试用背景颜色 */
+  display: flex;
+  height: 100vh; /* 确保容器高度为视口高度 */
+  width: 100%; /* 使用百分比确保宽度占据整个父元素的宽度 */
+  background-color: #333; /* 调试用背景颜色 */
 }
 
 .main_container {
@@ -53,15 +54,19 @@ const baseMenuWidth = ref('200px'); // 左侧菜单宽度
   background-color: aqua; /* 调试用背景颜色 */
 }
 
-    .layout_slider {
-        background-color: $base-menu-background; /* 使用正确的颜色变量 */
-        transition: width .3s; /* 添加过渡效果 */
+.layout_slider {
+  background-color: #333; /* 使用正确的颜色变量 */
+  transition: width .3s; /* 添加过渡效果 */
 
-        .scrollbar {
-            width: 100%;
-            height: calc(100vh - $base-menu-logo-height );
-        }
+  .scrollbar {
+    width: 100%;
+    height: calc(100vh - $base-menu-logo-height);
+
+    .el-menu {
+      border-right: none;
     }
+  }
+}
 
 .layout_tabbar {
   background-color: cyan;

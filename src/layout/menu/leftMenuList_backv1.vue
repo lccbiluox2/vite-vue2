@@ -1,45 +1,40 @@
 <template>
   <el-menu background-color="#333" text-color="white" active-text-color="#ffd04b">
     <template v-for="(item, index) in menuList" :key="index">
-      <!-- 没有子路由 -->
+      <!-- 如果没有子菜单 -->
       <el-menu-item v-if="!item.children || item.children.length === 0" :index="item.path">
         <span>{{ item.meta.title }}</span>
       </el-menu-item>
 
-      <!-- 有子路由但是只有一个子路由 -->
+      <!-- 如果有且仅有一个子菜单 -->
       <el-menu-item v-else-if="item.children && item.children.length === 1" :index="item.children[0].path">
         <span>{{ item.children[0].meta.title }}</span>
       </el-menu-item>
 
-      <!-- 有子路由且个数大于一个 -->
+      <!-- 如果有多个子菜单 -->
       <el-sub-menu v-else :index="item.path">
         <template #title>
           <span>{{ item.meta.title }}</span>
         </template>
-        <!-- 递归调用自己来处理子菜单 -->
-        <component :is="this.$options.name" :menuList="item.children"></component>
+        <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path">
+          <span>{{ child.meta.title }}</span>
+        </el-menu-item>
       </el-sub-menu>
     </template>
   </el-menu>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { PropType } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
 
 // 定义 props 类型
-defineProps({
+const props = defineProps({
   menuList: {
     type: Array as PropType<RouteRecordRaw[]>,
     required: true,
   },
 });
-</script>
-
-<script lang="ts">
-export default {
-  name: 'Menu', // 设置组件名称，用于递归引用
-};
 </script>
 
 <style scoped>

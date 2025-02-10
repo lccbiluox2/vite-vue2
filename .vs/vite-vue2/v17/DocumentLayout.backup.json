@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\layout.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\layout\\layout.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\menu\\leftMenuList.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\layout\\menu\\leftMenuList.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\layout.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\layout\\layout.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\views\\login\\index.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -55,13 +55,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "leftMenuList.vue",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\menu\\leftMenuList.vue",
               "RelativeDocumentMoniker": "src\\layout\\menu\\leftMenuList.vue",
               "ToolTip": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\menu\\leftMenuList.vue",
               "RelativeToolTip": "src\\layout\\menu\\leftMenuList.vue",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAUwBsAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
               "WhenOpened": "2025-02-09T13:14:13.281Z",
               "EditorCaption": ""
@@ -94,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "layout.vue",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\layout.vue",
               "RelativeDocumentMoniker": "src\\layout\\layout.vue",

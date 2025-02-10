@@ -4,6 +4,7 @@
 import { defineStore } from 'pinia';
 import { reqLogin } from '@/api/user';
 import type { LoginForm } from '@/api/user/type';
+import { constantRoutes } from '@/router/routers';
 
 
 
@@ -19,6 +20,7 @@ export const useUserStore = defineStore('user', {
     state: (): UserState => ({
         token: localStorage.getItem('ToKEN') || null, // 从本地存储获取 token
         username: '',
+        constantRoutes: constantRoutes,
     }),
 
     // 定义 getters
