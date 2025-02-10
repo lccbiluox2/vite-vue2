@@ -2,7 +2,7 @@
 <template>
     <div>
         <!-- 菜单列表 -->
-        <el-menu background-color="red" text-color="white" active-text-color="#ffd04b">
+        <el-menu text-color="white" active-text-color="#ffd04b">
             <el-menu-item index="1">首页</el-menu-item>
             <el-menu-item index="2">订单管理</el-menu-item>
             <el-sub-menu index="3">

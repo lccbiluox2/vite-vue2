@@ -27,6 +27,11 @@ const routes = [
     name: 'not-found', // 更具描述性的命名
   },
   {
+      path: '/test',
+      component: () => import('@/views/test/TestApi.vue'),
+      name: 'not-found', // 更具描述性的命名
+    },
+  {
     path: '/:pathMatch(.*)*', // 匹配所有未定义的路径
     component: () => import('@/views/404/index.vue'), // 直接指向404页面组件
     name: 'any', // 这个名字可以更具体一点，比如'catch-all'

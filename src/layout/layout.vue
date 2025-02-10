@@ -4,7 +4,7 @@
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
         <Logo></Logo>
         <el-scrollbar class="scrollbar">
-            <el-menu background-color="red" text-color="white">
+            <el-menu background-color="#333" text-color="white">
                 <Menu></Menu>
             </el-menu>
         </el-scrollbar>
@@ -42,7 +42,7 @@ const baseMenuWidth = ref('200px'); // 左侧菜单宽度
     display: flex;
     height: 100vh; /* 确保容器高度为视口高度 */
     width: 100%; /* 使用百分比确保宽度占据整个父元素的宽度 */
-    background-color: red; /* 调试用背景颜色 */
+    background-color: #333;; /* 调试用背景颜色 */
 }
 
 .main_container {
