@@ -1,30 +1,47 @@
 <template>
   <el-menu background-color="#333" text-color="white" active-text-color="#ffd04b">
-    <template v-for="(item, index) in menuList" :key="index">
+    <template v-for="(item, index) in menuList" :key="item.path">
       <!-- 没有子路由 -->
-      <el-menu-item v-if="!item.children || item.children.length === 0" :index="item.path">
-        <span>{{ item.meta.title }}</span>
-      </el-menu-item>
+      <template v-if="!item.children || item.children.length === 0">
+        <el-menu-item :index="item.path" v-if="!item.meta.hidden">
+          <template #title>
+            <el-icon v-if="item.meta.icon">
+              <component :is="item.meta.icon"></component>
+            </el-icon>
+            <span>{{ item.meta.title }}</span>
+          </template>
+        </el-menu-item>
+      </template>
 
       <!-- 有子路由但是只有一个子路由 -->
-      <el-menu-item v-else-if="item.children && item.children.length === 1" :index="item.children[0].path">
-        <span>{{ item.children[0].meta.title }}</span>
-      </el-menu-item>
+      <template v-else-if="item.children && item.children.length === 1">
+        <el-menu-item :index="item.children[0].path" v-if="!item.children[0].meta.hidden">
+          <template #title>
+            <el-icon v-if="item.children[0].meta.icon">
+              <component :is="item.children[0].meta.icon"></component>
+            </el-icon>
+            <span>{{ item.children[0].meta.title }}</span>
+          </template>
+        </el-menu-item>
+      </template>
 
       <!-- 有子路由且个数大于一个 -->
-      <el-sub-menu v-else :index="item.path">
+      <el-sub-menu :index="item.path" v-else-if="item.children && item.children.length > 1">
         <template #title>
+          <el-icon v-if="item.meta.icon">
+            <component :is="item.meta.icon"></component>
+          </el-icon>
           <span>{{ item.meta.title }}</span>
         </template>
         <!-- 递归调用自己来处理子菜单 -->
-        <component :is="this.$options.name" :menuList="item.children"></component>
+        <Menu :menuList="item.children"></Menu>
       </el-sub-menu>
     </template>
   </el-menu>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { PropType } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
 
 // 定义 props 类型

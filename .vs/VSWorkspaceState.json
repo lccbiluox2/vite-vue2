@@ -1,15 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
     "\\src",
     "\\src\\layout",
-    "\\src\\layout\\logo",
     "\\src\\layout\\menu",
+    "\\src\\router",
+    "\\src\\store",
+    "\\src\\store\\modules",
     "\\src\\styles",
     "\\src\\views",
     "\\src\\views\\home"
   ],
-  "SelectedNode": "\\src\\layout\\layout.vue",
+  "SelectedNode": "\\src\\layout\\menu\\leftMenuList.vue",
   "PreviewInSolutionExplorer": false
 }

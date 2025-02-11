@@ -23,7 +23,8 @@ export default defineConfig(({ command }) => ({
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: `@import "@/styles/variables.scss";` // 使用别名 @ 来简化路径
+                // 使用 @use 替代 @import
+                additionalData: `@use "@/styles/variables" as *;`
             }
         }
     }

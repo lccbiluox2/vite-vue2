@@ -7,6 +7,8 @@ import 'element-plus/dist/index.css';
 import App from './App.vue';
 import router from './router'; // 导入上面定义的路由器
 import pinia from './store'; // 导入上面定义的 Pinia 实例
+import globalComponentsPlugin from '@/components/index'; // 路径根据实际情况调整
+
 
 const loadMockServer = async () => {
     if (process.env.NODE_ENV === 'development') {
@@ -24,6 +26,8 @@ loadMockServer().then(() => {
     app.use(ElementPlus);
     app.use(router);
     app.use(pinia);
+    // 使用全局组件插件
+    app.use(globalComponentsPlugin);
 
     app.mount('#app');
 });
