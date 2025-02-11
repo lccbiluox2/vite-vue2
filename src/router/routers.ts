@@ -20,6 +20,16 @@ export const constantRoutes = [
             }
         ]
     },
+     {
+            path: '/screen',
+            component: () => import('@/views/screen/screen.vue'), // 动态加载404页面组件
+            name: 'not-found', // 命名路由
+            meta: {
+                title: "数据大屏",
+                hidden: false,
+                icon: "Promotion"
+            },
+        },
     {
         path: '/',
         component: () => import('@/layout/layout.vue'), // 动态加载布局页面组件
@@ -75,6 +85,46 @@ export const constantRoutes = [
                    icon: "Comment"
                },
            }
+        ]
+    },
+    {
+        path: '/acl',
+        component: () => import('@/layout/layout.vue'), // 动态加载布局页面组件
+        name: 'acl-page', // 使用唯一的命名路由
+        meta: {
+            title: "权限管理",
+            hidden: false,
+            icon: "Comment"
+        },
+        children: [
+            {
+                path: "/acl/user",
+                component: () => import('@/views/acl/user/user.vue'),
+                name: 'acl-user', // 使用唯一的命名路由
+                meta: {
+                    title: "用户管理",
+                    hidden: false,
+                    icon: "User"
+                },
+            },{
+              path: "/acl/role",
+              component: () => import('@/views/acl/role/role.vue'),
+              name: 'acl-role', // 使用唯一的命名路由
+              meta: {
+                  title: "角色管理",
+                  hidden: false,
+                  icon: "User"
+              },
+            },{
+              path: "/acl/permission",
+              component: () => import('@/views/acl/permission/permission.vue'),
+              name: 'acl-permission', // 使用唯一的命名路由
+              meta: {
+                  title: "菜单管理",
+                  hidden: false,
+                  icon: "User"
+              },
+          }
         ]
     },
     {

@@ -3,7 +3,7 @@
     <template v-for="(item, index) in menuList" :key="item.path">
       <!-- 没有子路由 -->
       <template v-if="!item.children || item.children.length === 0">
-        <el-menu-item :index="item.path" v-if="!item.meta.hidden">
+        <el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="goRoute">
           <template #title>
             <el-icon v-if="item.meta.icon">
               <component :is="item.meta.icon"></component>
@@ -51,6 +51,10 @@ defineProps({
     required: true,
   },
 });
+
+const goRoute = (vc) =>{
+    console.log(vc);
+}
 </script>
 
 <script lang="ts">
