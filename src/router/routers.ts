@@ -128,6 +128,55 @@ export const constantRoutes = [
         ]
     },
     {
+        path: '/product',
+        component: () => import('@/layout/layout.vue'), // 动态加载布局页面组件
+        name: 'Product', // 使用唯一的命名路由
+        meta: {
+            title: "商品管理",
+            hidden: false,
+            icon: "Goods"
+        },
+        children: [
+            {
+                path: "/product/trademark",
+                component: () => import('@/views/product/trademark/trademark.vue'),
+                name: 'Trademark', // 使用唯一的命名路由
+                meta: {
+                    title: "品牌管理",
+                    hidden: false,
+                    icon: "ShoppingCartFull"
+                },
+            },{
+              path: "/product/attr",
+              component: () => import('@/views/product/attr/attr.vue'),
+              name: 'Attr', // 使用唯一的命名路由
+              meta: {
+                  title: "属性管理",
+                  hidden: false,
+                  icon: "User"
+              },
+            },{
+              path: "/product/spu",
+              component: () => import('@/views/product/spu/spu.vue'),
+              name: 'Spu', // 使用唯一的命名路由
+              meta: {
+                  title: "Spu管理",
+                  hidden: false,
+                  icon: "User"
+              },
+          },{
+             path: "/product/sku",
+             component: () => import('@/views/product/sku/sku.vue'),
+             name: 'Sku', // 使用唯一的命名路由
+             meta: {
+                 title: "Sku管理",
+                 hidden: false,
+                 icon: "User"
+             },
+         }
+        ]
+    },
+    {
         path: '/:pathMatch(.*)*', // 匹配所有未定义的路径
         component: () => import('@/views/404/index.vue'), // 直接指向404页面组件
         name: 'any', // 唯一命名路由

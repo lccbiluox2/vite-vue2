@@ -3,7 +3,7 @@
     <template v-for="(item, index) in menuList" :key="item.path">
       <!-- 没有子路由 -->
       <template v-if="!item.children || item.children.length === 0">
-        <el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="goRoute">
+        <el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="goRoute(item.path)">
           <template #title>
             <el-icon v-if="item.meta.icon">
               <component :is="item.meta.icon"></component>
@@ -15,7 +15,7 @@
 
       <!-- 有子路由但是只有一个子路由 -->
       <template v-else-if="item.children && item.children.length === 1">
-        <el-menu-item :index="item.children[0].path" v-if="!item.children[0].meta.hidden">
+        <el-menu-item :index="item.children[0].path" v-if="!item.children[0].meta.hidden" @click="goRoute(item.children[0].path)">
           <template #title>
             <el-icon v-if="item.children[0].meta.icon">
               <component :is="item.children[0].meta.icon"></component>
@@ -43,6 +43,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 // 定义 props 类型
 defineProps({
@@ -52,9 +53,11 @@ defineProps({
   },
 });
 
-const goRoute = (vc) =>{
-    console.log(vc);
-}
+const router = useRouter();
+
+const goRoute = (path: string) => {
+  router.push(path);
+};
 </script>
 
 <script lang="ts">

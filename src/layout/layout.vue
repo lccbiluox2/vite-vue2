@@ -19,7 +19,7 @@
 
       <!-- 内容展示区域 -->
       <el-main class="layout_main">
-        <h2>内容展示区域</h2>
+        <router-view></router-view> <!-- 添加此行以显示匹配的路由组件 -->
       </el-main>
     </el-container>
   </div>
@@ -77,7 +77,6 @@ const userStore = useUserStore();
 }
 
 .layout_main {
-  background-color: white;
   padding: 20px;
   flex-grow: 1; /* 让主要内容区域能够根据可用空间增长 */
 }
