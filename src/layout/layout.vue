@@ -13,7 +13,7 @@
     <el-container class="main_container">
       <!-- 顶部导航（二级菜单） -->
       <el-header class="layout_tabbar">
-        <h2>二级菜单</h2>
+        <Tabbar :breadcrumbItems="breadcrumbItems"></Tabbar> <!-- 传递面包屑数据 -->
       </el-header>
 
       <!-- 内容展示区域 -->
@@ -25,16 +25,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed, watch } from 'vue';
 import Logo from '@/layout/logo/logo.vue'; // 直接导入整个组件
 import Menu from '@/layout/menu/leftMenuList.vue'; // 导入菜单组件
+import Tabbar from '@/layout/tabbar/tabbar-top.vue'; // 导入菜单组件
 import { useUserStore } from '@/store/modules/user';
+import { useRoute } from 'vue-router';
 
 // 示例变量，实际应用中可以从配置或状态管理中获取
 const baseMenuWidth = ref('200px'); // 左侧菜单宽度
 
 // 使用 Pinia 状态管理中的 user store
 const userStore = useUserStore();
+
+// 获取当前路由对象
+const route = useRoute();
+
+// 计算面包屑路径
+const breadcrumbItems = computed(() => {
+  const matched = route.matched.filter(record => record.meta.title);
+  return matched.map((item) => ({
+    title: item.meta.title as string,
+    path: item.path
+  }));
+});
 </script>
 
 <style scoped lang="scss">
@@ -42,7 +56,6 @@ const userStore = useUserStore();
   display: flex;
   height: 100vh; /* 确保容器高度为视口高度 */
   width: 100%; /* 使用百分比确保宽度占据整个父元素的宽度 */
-  background-color: #333; /* 调试用背景颜色 */
 }
 
 .main_container {
@@ -50,7 +63,6 @@ const userStore = useUserStore();
   flex-direction: column;
   width: calc(100% - v-bind(baseMenuWidth)); /* 根据左侧菜单宽度动态调整宽度 */
   height: 100%; /* 占满剩余空间 */
-  background-color: aqua; /* 调试用背景颜色 */
 }
 
 .layout_slider {
@@ -68,11 +80,12 @@ const userStore = useUserStore();
 }
 
 .layout_tabbar {
-  background-color: cyan;
+  padding-left: 0; /* 移除默认的padding-left */
+  background-color: green;
   position: sticky;
   top: 0;
   z-index: 1000; /* 确保在滚动时保持顶部 */
-  height: $base-tabbar-height; /* 设置顶部导航栏的高度 */
+  height: 60px; /* 设置固定高度 */
 }
 
 .layout_main {
