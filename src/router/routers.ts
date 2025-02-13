@@ -1,90 +1,110 @@
 export const constantRoutes = [
+    // 登录页面
     {
         path: '/login',
-        component: () => import('@/views/login/index.vue'), // 动态加载登录页面组件
-        name: 'login', // 命名路由
+        component: () => import('@/views/login/index.vue'),
+        name: 'login',
         meta: {
             title: "登录",
             hidden: false,
             icon: "Promotion"
-        },
-        children: [
-            {
-                path: "/home",
-                component: () => import('@/views/home/home.vue'),
-                meta: {
-                    title: "首页",
-                    hidden: false,
-                    icon: "HomeFilled"
-                },
-            }
-        ]
+        }
     },
+    // 首页
+    {
+        path: '/',
+        redirect: '/home', // 重定向到/home以使用子路由
+        component: () => import('@/layout/layout.vue'), // 使用布局组件来包含首页
+        name: 'home',
+        meta: {
+            title: "首页",
+            hidden: false,
+            icon: "HomeFilled" // 更改首页图标为更直观的“家”图标
+        },
+        children: [{
+            path: '/home', // 子路由路径
+            component: () => import('@/views/home/home.vue'),
+            name: 'home-child', // 独立的名字避免冲突
+            meta: {
+                title: "首页",
+                hidden: false,
+                icon: "HomeFilled" // 同样使用“家”图标
+            },
+        }]
+    },
+    // 数据大屏
      {
-            path: '/screen',
-            component: () => import('@/views/screen/screen.vue'), // 动态加载404页面组件
-            name: 'not-found', // 命名路由
+        path: '/screen',
+        redirect: '/screen', // 重定向到/home以使用子路由
+        component: () => import('@/layout/layout.vue'), // 使用布局组件来包含首页
+        name: 'screen',
+        meta: {
+            title: "数据大屏",
+            hidden: false,
+            icon: "DataBoard" // 假设存在一个名为“DataBoard”的图标表示数据大屏
+        },
+        children: [{
+            path: '/screen', // 子路由路径
+            component: () => import('@/views/screen/screen.vue'),
+            name: 'screen-child', // 独立的名字避免冲突
             meta: {
                 title: "数据大屏",
                 hidden: false,
-                icon: "Promotion"
+                icon: "DataBoard" // 假设存在一个名为“DataBoard”的图标表示数据大屏
             },
-        },
-    {
-        path: '/',
-        component: () => import('@/layout/layout.vue'), // 动态加载布局页面组件
-        name: 'home', // 命名路由
-        meta: {
-            title: "布局",
-            hidden: false,
-             icon: "Avatar"
-        },
+        }]
     },
+    // 404 页面
     {
         path: '/404',
-        component: () => import('@/views/404/index.vue'), // 动态加载404页面组件
-        name: 'not-found', // 命名路由
+        component: () => import('@/views/404/index.vue'),
+        name: 'not-found', // 使用特定的名字来标识404页面
         meta: {
             title: "404页面",
-            hidden: false,
-            icon: "MoreFilled"
+            hidden: true, // 设置为隐藏，不在菜单显示
+            icon: "Warning" // 使用警告图标表示错误或丢失页面
         },
     },
+    // 测试页面及其子页面
     {
         path: '/test',
-        component: () => import('@/views/test/TestApi.vue'),
-        name: 'test-page', // 使用唯一的命名路由
+        component: () => import('@/layout/layout.vue'),
+        name: 'test-page',
         meta: {
             title: "测试页面",
             hidden: false,
-            icon: "Comment"
+            icon: "User"
         },
         children: [
             {
-                path: "/test_A1",
+                path: "/test/test_A1", // 注意这里不需要前导斜杠
                 component: () => import('@/views/test/test_A1.vue'),
+                name: 'test-A1',
                 meta: {
                     title: "测试A",
                     hidden: false,
-                    icon: "Comment"
+                    icon: "TestTube"
                 },
-            },{
-              path: "/home_other",
-              component: () => import('@/views/test/test_A2.vue'),
-              meta: {
-                  title: "测试B",
-                  hidden: false,
-                  icon: "Comment"
-              },
-            },{
-               path: "/home_hidden",
-               component: () => import('@/views/test/test_hidden.vue'),
-               meta: {
-                   title: "测试隐藏子页面",
-                   hidden: true,
-                   icon: "Comment"
-               },
-           }
+            },
+            {
+                path: "/test/test_A2", // 注意这里不需要前导斜杠
+                component: () => import('@/views/test/test_A2.vue'),
+                name: 'test-B',
+                meta: {
+                    title: "测试B",
+                    hidden: false,
+                    icon: "TestTube"
+                },
+            },
+            {
+                path: "/test/test_hidden", // 注意这里不需要前导斜杠
+                component: () => import('@/views/test/test_hidden.vue'),
+                meta: {
+                    title: "测试隐藏子页面",
+                    hidden: true,
+                    icon: "TestTube"
+                },
+            }
         ]
     },
     {
@@ -94,7 +114,7 @@ export const constantRoutes = [
         meta: {
             title: "权限管理",
             hidden: false,
-            icon: "Comment"
+            icon: "Key"
         },
         children: [
             {
@@ -113,7 +133,7 @@ export const constantRoutes = [
               meta: {
                   title: "角色管理",
                   hidden: false,
-                  icon: "User"
+                  icon: "Role"
               },
             },{
               path: "/acl/permission",
@@ -122,7 +142,7 @@ export const constantRoutes = [
               meta: {
                   title: "菜单管理",
                   hidden: false,
-                  icon: "User"
+                  icon: "Menu"
               },
           }
         ]
@@ -144,7 +164,7 @@ export const constantRoutes = [
                 meta: {
                     title: "品牌管理",
                     hidden: false,
-                    icon: "ShoppingCartFull"
+                    icon: "Brand"
                 },
             },{
               path: "/product/attr",
@@ -153,7 +173,7 @@ export const constantRoutes = [
               meta: {
                   title: "属性管理",
                   hidden: false,
-                  icon: "User"
+                  icon: "Attribute"
               },
             },{
               path: "/product/spu",
@@ -162,7 +182,7 @@ export const constantRoutes = [
               meta: {
                   title: "Spu管理",
                   hidden: false,
-                  icon: "User"
+                  icon: "Spu"
               },
           },{
              path: "/product/sku",
@@ -171,18 +191,19 @@ export const constantRoutes = [
              meta: {
                  title: "Sku管理",
                  hidden: false,
-                 icon: "User"
+                 icon: "Sku"
              },
          }
         ]
     },
     {
         path: '/:pathMatch(.*)*', // 匹配所有未定义的路径
-        component: () => import('@/views/404/index.vue'), // 直接指向404页面组件
+        component: () => import('@/views/404/index.vue'),
         name: 'any', // 唯一命名路由
         meta: {
             title: "默认页面",
-            icon: "Comment"
+            hidden: true, // 设置为隐藏，不在菜单显示
+            icon: "Question"
         },
     },
 ];

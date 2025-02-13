@@ -8,7 +8,6 @@
           <Menu :menuList="userStore.constantRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
-      <h4>菜单</h4>
     </el-aside>
 
     <el-container class="main_container">
