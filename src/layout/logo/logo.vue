@@ -18,7 +18,6 @@
     .logo {
         width: 100%;
         height: $base-menu-logo-height;
-        color: white;
         display: flex;
         align-items: center;
         padding: 20px;
@@ -32,6 +31,7 @@
         p {
             margin: 0;
             font-size: 10px;
+            color: white;
         }
     }
 </style>
