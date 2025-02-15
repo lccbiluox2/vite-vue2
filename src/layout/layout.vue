@@ -41,6 +41,7 @@ const breadcrumbItems = computed(() => {
   const matched = route.matched.filter(record => record.meta.title);
   return matched.map((item) => ({
     title: item.meta.title as string,
+    icon: item.meta.icon as string,
     path: item.path
   }));
 });

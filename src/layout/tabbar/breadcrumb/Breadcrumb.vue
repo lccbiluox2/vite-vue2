@@ -7,7 +7,14 @@
 
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-icon="ArrowRight" style="display:inline-block; vertical-align:middle;">
-      <el-breadcrumb-item v-for="(item, index) in breadcrumbItems" :key="index" :to="{ path: item.path }">{{ item.title }}</el-breadcrumb-item>
+      <el-breadcrumb-item v-for="(item, index) in breadcrumbItems" :key="index" :to="{ path: item.path }">
+        <span v-if="item.icon" class="icon-margin"> <!-- 应用了CSS类 -->
+          <el-icon>
+            <component :is="item.icon"></component>
+          </el-icon>
+        </span>
+        <span> {{ item.title }} </span>
+      </el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>
@@ -34,5 +41,7 @@ function toggleMenu() {
 </script>
 
 <style scoped>
-/* 根据需要添加样式 */
+.icon-margin {
+  margin-right: 8px; /* 根据你的喜好调整 */
+}
 </style>
