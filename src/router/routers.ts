@@ -69,6 +69,7 @@ export const constantRoutes = [
     {
         path: '/test',
         component: () => import('@/layout/layout.vue'),
+        redirect: '/test/test_A1', // 重定向到子路由
         name: 'test-page',
         meta: {
             title: "测试页面",
@@ -110,6 +111,7 @@ export const constantRoutes = [
     {
         path: '/acl',
         component: () => import('@/layout/layout.vue'), // 动态加载布局页面组件
+        redirect: '/acl/user', // 使用绝对路径进行重定向
         name: 'acl-page', // 使用唯一的命名路由
         meta: {
             title: "权限管理",
