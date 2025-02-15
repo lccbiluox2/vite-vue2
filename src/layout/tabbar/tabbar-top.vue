@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { ref, defineProps } from 'vue';
 import Breadcrumb from '@/layout/tabbar/breadcrumb/Breadcrumb.vue';
-import TopSetting from '@/layout/tabbar/setting/top_setting.vue';
+import TopSetting from '@/layout/tabbar/setting/TopSetting.vue';
 
 // 组件名称
 defineOptions({

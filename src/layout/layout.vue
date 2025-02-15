@@ -4,7 +4,7 @@
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-         <Menu :menuList="userStore.constantRoutes"></Menu>
+        <Menu :menuList="userStore.constantRoutes"></Menu>
       </el-scrollbar>
     </el-aside>
 
@@ -15,9 +15,7 @@
       </el-header>
 
       <!-- 内容展示区域 -->
-      <el-main class="layout_main">
-        <router-view></router-view> <!-- 添加此行以显示匹配的路由组件 -->
-      </el-main>
+      <MainContent />
     </el-container>
   </div>
 </template>
@@ -27,6 +25,7 @@ import { computed } from 'vue';
 import Logo from '@/layout/logo/logo.vue'; // 直接导入整个组件
 import Menu from '@/layout/menu/leftMenuList.vue'; // 导入菜单组件
 import Tabbar from '@/layout/tabbar/tabbar-top.vue'; // 导入菜单组件
+import MainContent from '@/layout/main/mainContent.vue'; // 导入新的内容展示组件
 import { useUserStore } from '@/store/modules/user';
 import { useRoute } from 'vue-router';
 import { useLayoutSettingStore } from '@/store/modules/setting'; // 引入自定义 store
@@ -35,8 +34,10 @@ const layoutSettingStore = useLayoutSettingStore(); // 使用自定义 store
 const userStore = useUserStore();
 const route = useRoute();
 
-const baseMenuWidth = computed(() => layoutSettingStore.isFolded ? '64px' : '200px'); // 根据折叠状态动态计算宽度
+// 动态计算左侧菜单宽度
+const baseMenuWidth = computed(() => layoutSettingStore.isFolded ? '64px' : '200px');
 
+// 计算面包屑路径
 const breadcrumbItems = computed(() => {
   const matched = route.matched.filter(record => record.meta.title);
   return matched.map((item) => ({
@@ -82,10 +83,5 @@ const breadcrumbItems = computed(() => {
   top: 0;
   z-index: 1000; /* 确保在滚动时保持顶部 */
   height: 60px; /* 设置固定高度 */
-}
-
-.layout_main {
-  padding: 20px;
-  flex-grow: 1; /* 让主要内容区域能够根据可用空间增长 */
 }
 </style>
