@@ -88,7 +88,6 @@ function signOut() {
   padding: 0 20px;
   width: 100%; /* 调整为100%以适应父容器的高度 */
   height: 100%; /* 调整为100%以适应父容器的高度 */
-  background-color: white;
   border-bottom: 1px solid #e6e6e6;
 }
 
