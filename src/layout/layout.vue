@@ -4,9 +4,7 @@
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-        <el-menu background-color="#333" text-color="white">
-          <Menu :menuList="userStore.constantRoutes"></Menu>
-        </el-menu>
+        <Menu :menuList="userStore.constantRoutes"></Menu>
       </el-scrollbar>
     </el-aside>
 
@@ -37,7 +35,7 @@ const layoutSettingStore = useLayoutSettingStore(); // 使用自定义 store
 const userStore = useUserStore();
 const route = useRoute();
 
-const baseMenuWidth = computed(() => layoutSettingStore.isFolded ? '10px' : '200px'); // 根据折叠状态动态计算宽度
+const baseMenuWidth = computed(() => layoutSettingStore.isFolded ? '64px' : '200px'); // 根据折叠状态动态计算宽度
 
 const breadcrumbItems = computed(() => {
   const matched = route.matched.filter(record => record.meta.title);

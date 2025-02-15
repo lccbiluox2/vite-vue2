@@ -1,52 +1,47 @@
 <template>
-  <el-menu background-color="#333" text-color="white" active-text-color="#ffd04b">
+  <el-menu
+    :collapse="layoutSettingStore.isFolded"
+    background-color="#333"
+    text-color="white"
+    active-text-color="#ffd04b">
     <template v-for="(item, index) in menuList" :key="item.path">
       <!-- 没有子路由 -->
-      <template v-if="!item.children || item.children.length === 0">
-        <el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="goRoute(item.path)">
-          <template #title>
-            <el-icon v-if="item.meta.icon">
-              <component :is="item.meta.icon"></component>
-            </el-icon>
-            <span>{{ item.meta.title }}</span>
-          </template>
-        </el-menu-item>
-      </template>
+      <el-menu-item v-if="!item.children || item.children.length === 0" :index="item.path" @click="goRoute(item.path)">
+        <el-icon v-if="item.meta.icon">
+          <component :is="item.meta.icon"></component>
+        </el-icon>
+        <span>{{ item.meta.title }}</span>
+      </el-menu-item>
 
-      <!-- 有子路由但是只有一个子路由 -->
-      <template v-else-if="item.children && item.children.length === 1">
-        <el-menu-item :index="item.children[0].path" v-if="!item.children[0].meta.hidden" @click="goRoute(item.children[0].path)">
-          <template #title>
-            <el-icon v-if="item.children[0].meta.icon">
-              <component :is="item.children[0].meta.icon"></component>
-            </el-icon>
-            <span>{{ item.children[0].meta.title }}</span>
-          </template>
-        </el-menu-item>
-      </template>
-
-      <!-- 有子路由且个数大于一个 -->
-      <el-sub-menu :index="item.path" v-else-if="item.children && item.children.length > 1">
+      <!-- 有子路由 -->
+      <el-sub-menu v-else :index="item.path">
         <template #title>
           <el-icon v-if="item.meta.icon">
             <component :is="item.meta.icon"></component>
           </el-icon>
           <span>{{ item.meta.title }}</span>
         </template>
-        <!-- 递归调用自己来处理子菜单 -->
-        <Menu :menuList="item.children"></Menu>
+        <template v-for="subItem in item.children" :key="subItem.path">
+          <el-menu-item :index="subItem.path" @click="goRoute(subItem.path)">
+            <el-icon v-if="subItem.meta.icon">
+              <component :is="subItem.meta.icon"></component>
+            </el-icon>
+            <span>{{ subItem.meta.title }}</span>
+          </el-menu-item>
+        </template>
       </el-sub-menu>
     </template>
   </el-menu>
 </template>
 
 <script setup lang="ts">
+import { useLayoutSettingStore } from '@/store/modules/setting'; // 引入自定义 store
+import { useRouter } from 'vue-router';
 import { PropType } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
-import { useRouter } from 'vue-router';
 
 // 定义 props 类型
-defineProps({
+const props = defineProps({
   menuList: {
     type: Array as PropType<RouteRecordRaw[]>,
     required: true,
@@ -54,6 +49,7 @@ defineProps({
 });
 
 const router = useRouter();
+const layoutSettingStore = useLayoutSettingStore(); // 使用自定义 store
 
 const goRoute = (path: string) => {
   router.push(path);
@@ -61,7 +57,7 @@ const goRoute = (path: string) => {
 </script>
 
 <script lang="ts">
-import { ref, defineProps,defineOptions } from 'vue';
+import { ref, defineOptions } from 'vue';
 // 组件名称
 defineOptions({
   name: "Menu"
