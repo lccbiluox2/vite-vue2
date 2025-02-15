@@ -4,7 +4,7 @@
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-        <Menu :menuList="userStore.constantRoutes"></Menu>
+         <Menu :menuList="userStore.constantRoutes"></Menu>
       </el-scrollbar>
     </el-aside>
 
