@@ -7,10 +7,14 @@
 
 <script setup lang="ts">
 
-    import { defineComponent } from 'vue';
-    import appConfig from '@/AppSetting'; // 正确导入配置对象
+import { defineComponent } from 'vue';
+import appConfig from '@/AppSetting'; // 正确导入配置对象
 
 
+// 组件名称
+defineOptions({
+  name: "Logo"
+});
 
 </script>
 

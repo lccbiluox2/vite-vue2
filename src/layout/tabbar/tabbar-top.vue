@@ -39,6 +39,13 @@
 import { ref, defineProps } from 'vue';
 import { Expand } from '@element-plus/icons-vue';
 
+
+
+// 组件名称
+defineOptions({
+  name: "Tabbar"
+});
+
 const props = defineProps({
   breadcrumbItems: Array
 });

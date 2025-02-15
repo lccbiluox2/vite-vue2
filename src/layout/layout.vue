@@ -41,6 +41,12 @@ const userStore = useUserStore();
 // 获取当前路由对象
 const route = useRoute();
 
+
+// 组件名称
+defineOptions({
+  name: "Layout"
+});
+
 // 计算面包屑路径
 const breadcrumbItems = computed(() => {
   const matched = route.matched.filter(record => record.meta.title);

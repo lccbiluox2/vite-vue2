@@ -61,9 +61,11 @@ const goRoute = (path: string) => {
 </script>
 
 <script lang="ts">
-export default {
-  name: 'Menu', // 设置组件名称，用于递归引用
-};
+import { ref, defineProps,defineOptions } from 'vue';
+// 组件名称
+defineOptions({
+  name: "Menu"
+});
 </script>
 
 <style scoped>
