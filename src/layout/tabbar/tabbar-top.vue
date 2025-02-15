@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref, defineProps } from 'vue';
-import Breadcrumb from '@/layout/tabbar/breadcrumb/breadcrumb.vue';
+import Breadcrumb from '@/layout/tabbar/breadcrumb/Breadcrumb.vue';
 import TopSetting from '@/layout/tabbar/setting/top_setting.vue';
 
 // 组件名称
@@ -32,7 +32,7 @@ const props = defineProps({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 0px;
   width: 100%; /* 调整为100%以适应父容器的高度 */
   height: 100%; /* 调整为100%以适应父容器的高度 */
   border-bottom: 1px solid #e6e6e6;

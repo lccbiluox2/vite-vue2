@@ -12,5 +12,8 @@ export const useLayoutSettingStore = defineStore('SettingStore', {
         setFold(fold: boolean) {
             this.fold = fold;
         }
+    },
+    getters: {
+        isFolded: (state) => state.fold,
     }
 });

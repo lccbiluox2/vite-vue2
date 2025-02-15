@@ -25,29 +25,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { computed } from 'vue';
 import Logo from '@/layout/logo/logo.vue'; // 直接导入整个组件
 import Menu from '@/layout/menu/leftMenuList.vue'; // 导入菜单组件
 import Tabbar from '@/layout/tabbar/tabbar-top.vue'; // 导入菜单组件
 import { useUserStore } from '@/store/modules/user';
 import { useRoute } from 'vue-router';
+import { useLayoutSettingStore } from '@/store/modules/setting'; // 引入自定义 store
 
-// 示例变量，实际应用中可以从配置或状态管理中获取
-const baseMenuWidth = ref('200px'); // 左侧菜单宽度
-
-// 使用 Pinia 状态管理中的 user store
+const layoutSettingStore = useLayoutSettingStore(); // 使用自定义 store
 const userStore = useUserStore();
-
-// 获取当前路由对象
 const route = useRoute();
 
+const baseMenuWidth = computed(() => layoutSettingStore.isFolded ? '10px' : '200px'); // 根据折叠状态动态计算宽度
 
-// 组件名称
-defineOptions({
-  name: "Layout"
-});
-
-// 计算面包屑路径
 const breadcrumbItems = computed(() => {
   const matched = route.matched.filter(record => record.meta.title);
   return matched.map((item) => ({
