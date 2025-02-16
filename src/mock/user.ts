@@ -63,11 +63,17 @@ export default [
         method: 'get',
         response: (request) => {
             const headers = request.headers || {};
+            console.log('完整请求头:', JSON.stringify(headers, null, 2)); // 打印完整请求头
             const authorization = headers.authorization || headers.Authorization || '';
             const token = authorization.replace('Bearer ', '');
 
+            console.log('收到调用用户信息请求, request:', request);
+            console.log('收到调用用户信息请求, headers:', headers);
             console.log('收到调用用户信息请求, Token:', token, 'Authorization Header:', authorization);
-            const checkUser = createUserList().find(user => user.token === token);
+            const users = createUserList();
+//             console.log('可用用户列表:', JSON.stringify(users, null, 2));
+
+            const checkUser = users.find(user => user.token === token);
 
             if (!checkUser) {
                 console.log('没有获取到用户信息');
