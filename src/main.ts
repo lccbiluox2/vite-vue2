@@ -1,5 +1,3 @@
-// src/main.ts
-
 import { createApp } from 'vue';
 import './style.css';
 import type { App as _App } from 'vue';
@@ -10,9 +8,11 @@ import router from './router'; // 导入上面定义的路由器
 import pinia from './store'; // 导入上面定义的 Pinia 实例
 import globalComponentsPlugin from '@/components/index'; // 路径根据实际情况调整
 
+console.log('所有环境变量:', import.meta.env);
+
 // 开发环境特定的配置和初始化
 const setupForDevelopment = async (app: _App) => {
-    if (import.meta.env.NODE_ENV === 'development') {
+    if (import.meta.env.VITE_USER_NODE_ENV === 'development') {
         console.log('Running in development mode.');
 
         // 动态导入 mock 数据初始化脚本
@@ -34,8 +34,10 @@ const setupForProduction = (app: _App) => {
 };
 
 const initializeApp = async () => {
+    console.log('【主程序】准备初始化app');
     const app = createApp(App);
 
+    console.log('【主程序】设置组件');
     // 使用 Element Plus、路由、Pinia 和全局组件插件
     app.use(ElementPlus);
     app.use(router);
@@ -43,6 +45,7 @@ const initializeApp = async () => {
     app.use(globalComponentsPlugin);
 
     // 根据当前环境执行相应的初始化步骤
+    console.log('【主程序】根据当前环境执行相应的初始化步骤 ', import.meta.env.VITE_USER_NODE_ENV);
     await setupForDevelopment(app);
     setupForProduction(app);
 

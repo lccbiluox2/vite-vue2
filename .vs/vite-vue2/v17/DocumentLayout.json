@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\api\\request.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\api\\request.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\router\\routers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\router\\routers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\menu\\leftMenuList.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\layout\\menu\\leftMenuList.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\router\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\router\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\router\\routers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\router\\routers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\views\\login\\index.vue||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -50,11 +54,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "request.ts",
+              "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\api\\request.ts",
+              "RelativeDocumentMoniker": "src\\api\\request.ts",
+              "ToolTip": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\api\\request.ts",
+              "RelativeToolTip": "src\\api\\request.ts",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAEkAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-02-16T10:33:40.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "routers.ts",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\router\\routers.ts",
               "RelativeDocumentMoniker": "src\\router\\routers.ts",
@@ -67,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "user.ts",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\store\\modules\\user.ts",
               "RelativeDocumentMoniker": "src\\store\\modules\\user.ts",
@@ -75,12 +92,11 @@
               "RelativeToolTip": "src\\store\\modules\\user.ts",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-02-10T13:57:48.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-10T13:57:48.013Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "index.ts",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\router\\index.ts",
               "RelativeDocumentMoniker": "src\\router\\index.ts",
@@ -88,12 +104,11 @@
               "RelativeToolTip": "src\\router\\index.ts",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-02-10T13:30:01.635Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-10T13:30:01.635Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "index.vue",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\views\\login\\index.vue",
               "RelativeDocumentMoniker": "src\\views\\login\\index.vue",
@@ -101,12 +116,11 @@
               "RelativeToolTip": "src\\views\\login\\index.vue",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
-              "WhenOpened": "2025-02-09T13:26:39.125Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T13:26:39.125Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "leftMenuList.vue",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\menu\\leftMenuList.vue",
               "RelativeDocumentMoniker": "src\\layout\\menu\\leftMenuList.vue",
@@ -119,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "variables.scss",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\styles\\variables.scss",
               "RelativeDocumentMoniker": "src\\styles\\variables.scss",
@@ -127,12 +141,11 @@
               "RelativeToolTip": "src\\styles\\variables.scss",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
-              "WhenOpened": "2025-02-09T12:52:35.5Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T12:52:35.5Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "App.vue",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\App.vue",
               "RelativeDocumentMoniker": "src\\App.vue",
@@ -140,12 +153,11 @@
               "RelativeToolTip": "src\\App.vue",
               "ViewState": "AgIAADkAAAAAAAAAAADwv0EAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
-              "WhenOpened": "2025-02-09T12:02:37.468Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T12:02:37.468Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "layout.vue",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\layout.vue",
               "RelativeDocumentMoniker": "src\\layout\\layout.vue",
@@ -153,12 +165,11 @@
               "RelativeToolTip": "src\\layout\\layout.vue",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
-              "WhenOpened": "2025-02-09T12:01:55.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T12:01:55.653Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AppSetting.ts",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\AppSetting.ts",
               "RelativeDocumentMoniker": "src\\AppSetting.ts",
@@ -166,12 +177,11 @@
               "RelativeToolTip": "src\\AppSetting.ts",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-02-09T11:41:48.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T11:41:48.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "logo.vue",
               "DocumentMoniker": "D:\\lcc\\IdeaProject\\vite\\vite-vue2\\src\\layout\\logo\\logo.vue",
               "RelativeDocumentMoniker": "src\\layout\\logo\\logo.vue",
@@ -179,8 +189,7 @@
               "RelativeToolTip": "src\\layout\\logo\\logo.vue",
               "ViewState": "AgIAABAAAAAAAAAAAAAcwCQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003491|",
-              "WhenOpened": "2025-02-09T10:17:54.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T10:17:54.577Z"
             }
           ]
         }

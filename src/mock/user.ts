@@ -28,7 +28,7 @@ function createUserList() {
 export default [
     // 用户登录接口
     {
-        url: '/api/user/login',
+        url: '/user/login',
         method: 'post',
         response: ({ body }) => {
             console.log('收到用户登录请求, 原始body:', JSON.parse(body)); // 打印原始body对象
@@ -59,7 +59,7 @@ export default [
     },
     // 获取用户信息接口
     {
-        url: '/api/user/info',
+        url: '/user/info',
         method: 'get',
         response: (request) => {
             const headers = request.headers || {};
