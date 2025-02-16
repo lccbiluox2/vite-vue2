@@ -53,7 +53,7 @@ import { useLayoutSettingStore } from '@/store/modules/setting'; // 引入自定
 defineProps({
   menuList: {
     type: Array as PropType<RouteRecordRaw[]>,
-    required: true,
+    default: () => [],
   },
 });
 
