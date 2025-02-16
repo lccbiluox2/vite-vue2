@@ -69,7 +69,6 @@ const rules = {
 };
 
 // 处理登录逻辑
-// 处理登录逻辑
 const handleLogin = async () => {
   if (!loginFormRef.value) return;
 
@@ -78,6 +77,7 @@ const handleLogin = async () => {
     loading.value = true;
 
     // 调用 store 中的登录方法（模拟接口调用）
+    console.log('准备登录，登录界面传参, loginForm.value:', loginForm.value);
     const result = await useStore.userLogin(loginForm.value);
 
     // 编程式导航跳转到首页

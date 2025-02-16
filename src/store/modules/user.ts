@@ -1,69 +1,66 @@
 // src/store/modules/user.ts
 
-// 导入 defineStore 函数用于创建 store
 import { defineStore } from 'pinia';
-import { reqLogin } from '@/api/user';
+import { reqLogin, reqUserInfo } from '@/api/user/index'; // 导入获取用户信息的API
 import type { LoginForm } from '@/api/user/type';
 import { constantRoutes } from '@/router/routers';
 
-
-
-// 定义接口以描述 state 的结构
 interface UserState {
     token: string | null; // 用户唯一标识token
     username: string;
 }
 
-// 创建用户相关的 store
 export const useUserStore = defineStore('user', {
-    // 定义 state
     state: (): UserState => ({
-        token: localStorage.getItem('ToKEN') || null, // 从本地存储获取 token
+        token: localStorage.getItem('TOKEN') || null,
         username: '',
         constantRoutes: constantRoutes,
     }),
-
-    // 定义 getters
     getters: {
         getToken: (state) => state.token,
         getUsername: (state) => state.username,
     },
-
-    // 定义 actions
     actions: {
         async userLogin(data: LoginForm) {
             try {
-                
-                // 发送登录请求
+                console.log('准备登录, data:', data);
                 const result = await reqLogin(data);
-
-                // 检查响应码是否为200（成功）
+                console.log('登录调用结果, result:', result);
                 if (result.code === 200) {
-                    // 将 token 存储到 state 和 localStorage 中
                     this.token = result.data.token;
-                    localStorage.setItem('ToKEN', result.data.token);
-
-                    // 更新用户名
+                    localStorage.setItem('TOKEN', result.data.token);
                     this.username = data.username;
-
                     return 'ok';
                 } else {
-                    // 如果登录失败，返回错误信息
-                    //return Promise.reject(new Error(result.data.message));
-                    return 'ok';
+                    return Promise.reject(new Error(result.message));
                 }
             } catch (error) {
-                // 处理请求中的任何异常
-                //return Promise.reject(new Error('请求过程中发生错误'));
-                return 'ok';
+                console.error('Login failed:', error);
+                return Promise.reject(error);
             }
         },
-
-        // 清除用户信息和 token
         logout() {
             this.token = null;
             this.username = '';
-            localStorage.removeItem('ToKEN');
+            localStorage.removeItem('TOKEN');
+        },
+
+        async getUserInfo() {
+            try {
+                console.log('准备获取用户信息');
+                const result = await reqUserInfo();
+                console.log('用户信息', result);
+                if (result.code === 200) {
+                    this.username = result.data.username;
+                    return 'ok';
+                } else {
+                    console.error('Failed to fetch user info:', result.message);
+                    return Promise.reject(new Error(result.message));
+                }
+            } catch (error) {
+                console.error('Error fetching user info:', error);
+                return Promise.reject(error);
+            }
         },
     },
 });

@@ -1,17 +1,12 @@
-// project/mock/user.ts
-
-/**
- * createUserList: ´Ëº¯ÊıÖ´ĞĞ»á·µ»ØÒ»¸öÊı×é£¬Êı×éÀïÃæ°üº¬Á½¸öÓÃ»§ĞÅÏ¢¡£
- */
 function createUserList() {
     return [
         {
             userId: 1,
             avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4a3211',
-            username: 'admin',
-            password: '111111',
-            desc: 'Æ½Ì¨¹ÜÀíÔ±',
-            roles: ['Æ½Ì¨¹ÜÀíÔ±'],
+            username: 'admin', // æ³¨æ„è¿™é‡Œçš„ç”¨æˆ·åæ˜¯å°å†™çš„ "admin"
+            password: '123456',
+            desc: 'å¹³å°ç®¡ç†å‘˜',
+            roles: ['å¹³å°ç®¡ç†å‘˜'],
             buttons: ['cuser.detail'],
             routes: ['home'],
             token: 'Admin Token'
@@ -20,9 +15,9 @@ function createUserList() {
             userId: 2,
             avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4a3212',
             username: 'system',
-            password: '111111',
-            desc: 'ÏµÍ³¹ÜÀíÔ±',
-            roles: ['ÏµÍ³¹ÜÀíÔ±'],
+            password: '123456',
+            desc: 'ç³»ç»Ÿç®¡ç†å‘˜',
+            roles: ['ç³»ç»Ÿç®¡ç†å‘˜'],
             buttons: ['cuser.detail'],
             routes: ['home'],
             token: 'System Token'
@@ -31,45 +26,52 @@ function createUserList() {
 }
 
 export default [
-    // ÓÃ»§µÇÂ¼½Ó¿Ú
+    // ç”¨æˆ·ç™»å½•æ¥å£
     {
-        url: '/api/user/login', // ÇëÇóµØÖ·
-        method: 'post', // ÇëÇó·½Ê½
+        url: '/api/user/login',
+        method: 'post',
         response: ({ body }) => {
-            // »ñÈ¡ÇëÇóÌåĞ¯´ø¹ıÀ´µÄÓÃ»§ÃûÓëÃÜÂë
-            const { username, password } = body;
+            console.log('æ”¶åˆ°ç”¨æˆ·ç™»å½•è¯·æ±‚, åŸå§‹body:', body); // æ‰“å°åŸå§‹bodyå¯¹è±¡
+            console.log('æ”¶åˆ°ç”¨æˆ·ç™»å½•è¯·æ±‚, body stringified:', JSON.stringify(body, null, 2)); // æ›´è¯¦ç»†çš„æ—¥å¿—
 
-            // µ÷ÓÃ»ñÈ¡ÓÃ»§ĞÅÏ¢º¯Êı£¬ÓÃÓÚÅĞ¶ÏÊÇ·ñÓĞ´ËÓÃ»§
-            const checkUser = createUserList().find(
+            const username = body['username'];
+            const password = body['password'];
+
+            console.log('è§£æç”¨æˆ·ä¿¡æ¯:', 'username:', username, 'password:', password);
+
+            const users = createUserList();
+            console.log('å¯ç”¨ç”¨æˆ·åˆ—è¡¨:', JSON.stringify(users, null, 2));
+
+            const checkUser = users.find(
                 user => user.username === username && user.password === password
             );
 
-            // Ã»ÓĞÓÃ»§·µ»ØÊ§°ÜĞÅÏ¢
+            console.log('åŒ¹é…ç”¨æˆ·ä¿¡æ¯ç»“æœ, checkUser:', checkUser);
+
             if (!checkUser) {
-                return { code: 201, data: { message: 'ÕËºÅ»òÕßÃÜÂë²»ÕıÈ·' } };
+                return { code: 201, data: { message: 'ç”¨æˆ·åæˆ–å¯†ç ä¸æ­£ç¡®' } };
             }
 
-            // Èç¹ûÓĞ·µ»Ø³É¹¦ĞÅÏ¢
             return { code: 200, data: { token: checkUser.token } };
         }
     },
-    // »ñÈ¡ÓÃ»§ĞÅÏ¢½Ó¿Ú
+    // è·å–ç”¨æˆ·ä¿¡æ¯æ¥å£
     {
-        url: '/api/user/info', // ÇëÇóµØÖ·
-        method: 'get', // ÇëÇó·½Ê½
+        url: '/api/user/info',
+        method: 'get',
         response: (request) => {
-            // »ñÈ¡ÇëÇóÍ·Ğ¯´øtoken
-            const token = request.headers.token;
+            const headers = request.headers || {};
+            const authorization = headers.authorization || headers.Authorization || '';
+            const token = authorization.replace('Bearer ', '');
 
-            // ²é¿´ÓÃ»§ĞÅÏ¢ÊÇ·ñ°üº¬ÓĞ´ËtokenÓÃ»§
+            console.log('æ”¶åˆ°è°ƒç”¨ç”¨æˆ·ä¿¡æ¯è¯·æ±‚, Token:', token, 'Authorization Header:', authorization);
             const checkUser = createUserList().find(user => user.token === token);
 
-            // Ã»ÓĞ·µ»ØÊ§°ÜµÄĞÅÏ¢
             if (!checkUser) {
-                return { code: 201, data: { message: 'TokenÎŞĞ§»òÒÑ¹ıÆÚ' } };
+                console.log('æ²¡æœ‰è·å–åˆ°ç”¨æˆ·ä¿¡æ¯');
+                return { code: 201, data: { message: 'Tokenæ— æ•ˆæˆ–å·²è¿‡æœŸ' } };
             }
-
-            // Èç¹ûÓĞ·µ»Ø³É¹¦ĞÅÏ¢
+            console.log('è·å–åˆ°ç”¨æˆ·ä¿¡æ¯');
             return { code: 200, data: checkUser };
         }
     }

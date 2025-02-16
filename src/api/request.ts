@@ -1,11 +1,14 @@
-import axios from 'axios';
+// src/api/request.ts
 
-// 获取环境变量中的API基础URL
+import axios from 'axios';
+import { useUserStore } from '@/store/modules/user'; // 引入用户store
+import { ElMessage } from 'element-plus'; // 局部引入 ElMessage
+
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const config = {
-    baseURL: API_BASE_URL, // 使用环境变量定义的基础URL
-    timeout: 20000, // 20 seconds
+    baseURL: API_BASE_URL,
+    timeout: 20000,
     withCredentials: true,
 };
 
@@ -16,13 +19,18 @@ class RequestHttp {
         this.service = axios.create(config);
 
         // 请求拦截器
-        this.service.interceptors.request.use(
-            config => ({
-                ...config,
-                headers: { Authorization: 'Bearer ' + (localStorage.getItem('token') || '') }, // 使用本地存储的token
-            }),
-            error => Promise.reject(error)
-        );
+       // 请求拦截器
+       this.service.interceptors.request.use(
+           config => {
+               const userStore = useUserStore(); // 获取用户store实例
+               const token = userStore.getToken; // 从store中获取token
+               if(token) { // 检查 token 是否存在
+                   config.headers.Authorization = 'Bearer ' + token;
+               }
+               return config;
+           },
+           error => Promise.reject(error)
+       );
 
         // 响应拦截器
         this.service.interceptors.response.use(
@@ -67,5 +75,4 @@ class RequestHttp {
     }
 }
 
-// 确保这里导出的是你想要使用的实例
 export default new RequestHttp(config);

@@ -4,8 +4,8 @@ import request from '@/api/request';
 import type { loginForm, loginResponseData, userResponseData } from '@/api/user/type';
 
 enum API {
-    LOGIN_URL = "/user/login",
-    USERINFO_URL = "/user/info"
+    LOGIN_URL = "/api/user/login",
+    USERINFO_URL = "/api/user/info"
 }
 
 export const reqLogin = (data: loginForm) =>

@@ -6,7 +6,18 @@
 </template>
 
 <script setup lang="ts">
-// 可以在此处添加逻辑
+import { onMounted } from 'vue';
+import { useUserStore } from '@/store/modules/user';
+
+const userStore = useUserStore();
+
+onMounted(async () => {
+    try {
+        await userStore.getUserInfo();
+    } catch (error) {
+        console.error('Failed to fetch user info:', error);
+    }
+});
 </script>
 
 <style scoped>
