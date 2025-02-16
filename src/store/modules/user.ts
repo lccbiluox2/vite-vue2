@@ -25,9 +25,9 @@ export const useUserStore = defineStore('user', {
     actions: {
         async userLogin(data: LoginForm) {
             try {
-                console.log('准备登录, data:', data);
+                console.log('【存储层】 准备登录, data:', data);
                 const result = await reqLogin(data);
-                console.log('登录调用结果, result:', result);
+                console.log('【存储层】 登录调用结果, result:', result);
                 if (result.code === 200) {
                     this.token = result.data.token;
                     localStorage.setItem('TOKEN', result.data.token);
@@ -51,18 +51,18 @@ export const useUserStore = defineStore('user', {
 
         async getUserInfo() {
             try {
-                console.log('准备获取用户信息');
+                console.log('【存储层】 准备获取用户信息');
                 const result = await reqUserInfo();
-                console.log('用户信息', result);
+                console.log('【存储层】 用户信息', result);
                 if (result.code === 200) {
                     this.username = result.data.username;
                     return 'ok';
                 } else {
-                    console.error('Failed to fetch user info:', result.message);
+                    console.error('【存储层】 Failed to fetch user info:', result.message);
                     return Promise.reject(new Error(result.message));
                 }
             } catch (error) {
-                console.error('Error fetching user info:', error);
+                console.error('【存储层】 Error fetching user info:', error);
                 return Promise.reject(error);
             }
         },
@@ -72,7 +72,7 @@ export const useUserStore = defineStore('user', {
         },
 
         async loadConstantRoutes() {
-            console.log('准备设置路由信息, constantRoutes:', constantRoutes);
+            console.log('【存储层】 准备设置路由信息, constantRoutes:', constantRoutes);
             // 如果路由信息是静态的，可以直接赋值
             this.setConstantRoutes(constantRoutes);
 

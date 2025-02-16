@@ -9,7 +9,7 @@ enum API {
 }
 
 export const reqLogin = (data: loginForm) => {
-    console.log('【用户API】准备发送登录请求, 参数:', data); // 打印传入的参数
+    console.log('【用户API】准备发送登录请求, url:',API.LOGIN_URL,'参数:', data); // 打印传入的参数
     return request.post<any, loginResponseData>(API.LOGIN_URL, data)
         .then(response => {
             console.log('【用户API】登录请求响应:', response); // 打印响应数据
@@ -22,7 +22,7 @@ export const reqLogin = (data: loginForm) => {
 };
 
 export const reqUserInfo = () => {
-    console.log('【用户API】准备发送获取用户信息请求'); // 打印请求开始的信息
+    console.log('【用户API】准备发送获取用户信息请求',API.USERINFO_URL); // 打印请求开始的信息
     return request.get(API.USERINFO_URL, {
         // 如果你需要在这里添加额外的 headers，可以这样操作
         headers: {'Custom-Header': 'value'}

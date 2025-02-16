@@ -13,6 +13,7 @@ const userStore = useUserStore();
 
 onMounted(async () => {
     try {
+        console.log('【主页面】主页面加载初始化');
         await userStore.getUserInfo();
     } catch (error) {
         console.error('Failed to fetch user info:', error);
