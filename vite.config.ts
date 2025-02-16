@@ -13,7 +13,7 @@ export default defineConfig(({ command }) => ({
             mockPath: 'mock/',
             watchFiles: true,
             injectFile: true,
-        }),
+        } as any),
     ],
     resolve: {
         alias: {
