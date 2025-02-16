@@ -38,13 +38,11 @@ function refreshContent() {
 
 function toggleFullScreen() {
   console.log('切换全屏');
-  const mainContent = document.querySelector('.layout-main'); // 确保选择正确的元素
-  if (mainContent?.requestFullscreen) {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      mainContent.requestFullscreen();
-    }
+  let full = document.fullscreenElement;
+  if(full){
+    document.exitFullscreen();
+  }else{
+    document.documentElement.requestFullscreen();
   }
 }
 
