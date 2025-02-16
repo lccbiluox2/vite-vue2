@@ -8,6 +8,7 @@ import { constantRoutes } from '@/router/routers';
 interface UserState {
     token: string | null; // 用户唯一标识token
     username: string;
+    avatar: string;
     constantRoutes: any[]; // 假设路由信息是一个数组
 }
 
@@ -15,11 +16,13 @@ export const useUserStore = defineStore('user', {
     state: (): UserState => ({
         token: localStorage.getItem('TOKEN') || null,
         username: '',
+        avatar: '',
         constantRoutes: [], // 初始化为空数组
     }),
     getters: {
         getToken: (state) => state.token,
         getUsername: (state) => state.username,
+        getAvatar: (state) => state.avatar,
         getConstantRoutes: (state) => state.constantRoutes,
     },
     actions: {
@@ -31,7 +34,9 @@ export const useUserStore = defineStore('user', {
                 if (result.code === 200) {
                     this.token = result.data.token;
                     localStorage.setItem('TOKEN', result.data.token);
-                    this.username = data.username;
+                    this.username = result.data.username;
+                    this.avatar = result.data.avatar;
+                    console.log('【存储层】 设置用户登录信息, token:', this.token,' username:',this.username,' avatar:',this.avatar);
                     await this.loadConstantRoutes(); // 登录成功后加载常量路由
                     return 'ok';
                 } else {
@@ -45,6 +50,7 @@ export const useUserStore = defineStore('user', {
         logout() {
             this.token = null;
             this.username = '';
+            this.avatar = '';
             this.constantRoutes = []; // 清空路由信息
             localStorage.removeItem('TOKEN');
         },
@@ -56,6 +62,7 @@ export const useUserStore = defineStore('user', {
                 console.log('【存储层】 用户信息', result);
                 if (result.code === 200) {
                     this.username = result.data.username;
+                    this.avatar = result.data.avatar;
                     return 'ok';
                 } else {
                     console.error('【存储层】 Failed to fetch user info:', result.message);

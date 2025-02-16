@@ -58,7 +58,12 @@ export default [
                 return { code: 201, data: { message: '用户名或密码不正确' } };
             }
 
-            return { code: 200, data: { token: checkUser.token } };
+            return { code: 200, data: {
+                    token: checkUser.token,
+                    username: checkUser.username,
+                    avatar: checkUser.avatar
+                }
+            };
         }
     },
     // 获取用户信息接口
