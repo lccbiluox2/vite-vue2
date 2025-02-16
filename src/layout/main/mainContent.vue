@@ -1,11 +1,18 @@
 <template>
   <el-main :class="['layout_main', { 'fullscreen': isFullScreen }]">
     <transition name="fade">
-      <router-view v-if="!needRefresh"></router-view>
+      <div v-if="!needRefresh">
+        <router-view v-slot="{ Component }">
+          <transition name="fade">
+            <component :is="Component" />
+          </transition>
+        </router-view>
+      </div>
       <div v-else key="refresh" @animationend="onRefreshAnimationEnd">正在刷新...</div>
     </transition>
   </el-main>
 </template>
+
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
