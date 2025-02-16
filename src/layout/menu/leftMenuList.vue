@@ -1,9 +1,9 @@
 <template>
-    <el-menu
-      :collapse="layoutSettingStore.isFolded"
-      background-color="#333"
-      text-color="white"
-      active-text-color="#ffd04b">
+  <el-menu
+    :collapse="layoutSettingStore.isFolded"
+    background-color="#333"
+    text-color="white"
+    active-text-color="#ffd04b">
     <template v-for="(item, index) in menuList" :key="item.path">
       <!-- 没有子路由 -->
       <template v-if="!item.children || item.children.length === 0">
@@ -37,7 +37,7 @@
           </el-icon>
           <span>{{ item.meta.title }}</span>
         </template>
-        <!-- 递归调用自己来处理子菜单 -->
+        <!-- 递归调用自己来处理子菜单，并确保传递 menuList -->
         <Menu :menuList="item.children"></Menu>
       </el-sub-menu>
     </template>
@@ -50,8 +50,6 @@ import { RouteRecordRaw } from 'vue-router';
 import { useRouter } from 'vue-router';
 import { useLayoutSettingStore } from '@/store/modules/setting'; // 引入自定义 store
 
-
-// 定义 props 类型
 defineProps({
   menuList: {
     type: Array as PropType<RouteRecordRaw[]>,
@@ -61,7 +59,6 @@ defineProps({
 
 const router = useRouter();
 const layoutSettingStore = useLayoutSettingStore(); // 使用自定义 store
-
 
 const goRoute = (path: string) => {
   router.push(path);
@@ -73,8 +70,6 @@ export default {
   name: 'Menu', // 设置组件名称，用于递归引用
 };
 </script>
-
-
 
 <style scoped>
 /* 样式可以根据需要调整 */

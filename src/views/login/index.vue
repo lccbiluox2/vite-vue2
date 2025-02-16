@@ -81,8 +81,9 @@ const handleLogin = async () => {
     const result = await useStore.userLogin(loginForm.value);
 
     // 编程式导航跳转到首页
-      router.push('/');
-      console.log('Navigation to home page triggered.'); // 添加日志输出
+    console.log('准备编程式导航跳转到首页,router.push');
+    router.push('/');
+    console.log('Navigation to home page triggered.'); // 添加日志输出
 
     // 登录成功提示信息
     ElNotification({

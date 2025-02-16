@@ -4,7 +4,8 @@
     <el-aside :style="{ width: baseMenuWidth }" class="layout_slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-        <Menu :menuList="userStore.constantRoutes"></Menu>
+        <!-- 使用 v-if 控制 Menu 组件的渲染 -->
+        <Menu v-if="userStore.constantRoutes.length > 0" :menuList="userStore.constantRoutes"></Menu>
       </el-scrollbar>
     </el-aside>
 
@@ -21,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed,onMounted,watch } from 'vue';
 import Logo from '@/layout/logo/logo.vue'; // 直接导入整个组件
 import Menu from '@/layout/menu/leftMenuList.vue'; // 导入菜单组件
 import Tabbar from '@/layout/tabbar/tabbar-top.vue'; // 导入菜单组件
@@ -46,6 +47,15 @@ const breadcrumbItems = computed(() => {
     path: item.path
   }));
 });
+
+onMounted(() => {
+  console.log('常量路由信息 Routes:', userStore.constantRoutes);
+});
+
+watch(() => userStore.constantRoutes, (newVal) => {
+  console.log('常量路由信息 Routes Changed:', newVal);
+});
+
 </script>
 
 <style scoped lang="scss">

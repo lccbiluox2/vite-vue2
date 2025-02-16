@@ -1,14 +1,27 @@
 // src/router/index.ts
 
-// 导入必要的模块
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { constantRoutes } from '@/router/routers';
+import { useUserStore } from '@/store/modules/user';
 
-// 创建路由器实例
 const router = createRouter({
-  history: createWebHashHistory(), // 使用 hash 模式的路由历史记录
-  routes: constantRoutes, // 正确地传递路由配置
+  history: createWebHashHistory(),
+  routes: constantRoutes,
 });
 
-// 导出路由器实例
+router.beforeEach(async (to, from, next) => {
+  const userStore = useUserStore();
+
+  if (!userStore.getConstantRoutes.length && to.path !== '/login') {
+    await userStore.loadConstantRoutes();
+  }
+
+  // 如果用户未登录且尝试访问非登录页面，则重定向到登录页
+  if (!userStore.getToken && to.path !== '/login') {
+    next('/login');
+  } else {
+    next();
+  }
+});
+
 export default router;

@@ -31,16 +31,18 @@ export default [
         url: '/api/user/login',
         method: 'post',
         response: ({ body }) => {
-            console.log('收到用户登录请求, 原始body:', body); // 打印原始body对象
+            console.log('收到用户登录请求, 原始body:', JSON.parse(body)); // 打印原始body对象
             console.log('收到用户登录请求, body stringified:', JSON.stringify(body, null, 2)); // 更详细的日志
 
-            const username = body['username'];
-            const password = body['password'];
+            // 这里必须自己mock一下，因为这里默认拿到的是字符串，不然无法获取到相关信息
+            const bodyClient = JSON.parse(body)
+            const username = bodyClient.username;
+            const password = bodyClient.password;
 
             console.log('解析用户信息:', 'username:', username, 'password:', password);
 
             const users = createUserList();
-            console.log('可用用户列表:', JSON.stringify(users, null, 2));
+//             console.log('可用用户列表:', JSON.stringify(users, null, 2));
 
             const checkUser = users.find(
                 user => user.username === username && user.password === password
