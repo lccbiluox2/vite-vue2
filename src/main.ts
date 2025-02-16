@@ -45,17 +45,6 @@ const initializeApp = async () => {
     await setupForDevelopment(app);
     setupForProduction(app);
 
-    app.use((req, res, next) => {
-        res.header('Access-Control-Allow-Origin', 'http://yourfrontenddomain.com');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.header('Access-Control-Allow-Credentials', 'true'); // 如果需要支持cookie等凭据
-        if (req.method === 'OPTIONS') {
-            return res.sendStatus(200);
-        }
-        next();
-    });
-
     // 挂载应用
     app.mount('#app');
 };
