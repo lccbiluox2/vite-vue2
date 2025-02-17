@@ -21,5 +21,8 @@ router.beforeEach(async (to, from, next) => {
     } else {
         next();
     }
+});
+
+router.afterEach(async (to:any, from:any) => {
     nprogress.done(); // 结束进度条
 });
