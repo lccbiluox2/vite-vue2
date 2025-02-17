@@ -8,6 +8,7 @@ import router from './router'; // 导入上面定义的路由器
 import pinia from './store'; // 导入上面定义的 Pinia 实例
 import globalComponentsPlugin from '@/components/index'; // 路径根据实际情况调整
 import '@/mock'; // 动态导入 mock 数据初始化脚本
+import '@/router/permission/permission'; // 导入权限控制模块
 
 console.log('所有环境变量:', import.meta.env);
 
