@@ -2,7 +2,7 @@ function createUserList() {
     return [
         {
             userId: 1,
-            avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4a3211',
+            avatar: 'https://img0.baidu.com/it/u=252894945,1630497372&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=800',
             username: 'admin', // 注意这里的用户名是小写的 "admin"
             password: '123456',
             desc: '平台管理员',
