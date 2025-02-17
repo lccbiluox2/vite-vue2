@@ -1,7 +1,7 @@
 // src/api/request.ts
 
 import axios from 'axios';
-import { useUserStore } from '@/store/modules/user'; // 引入用户store
+import { useUserStore } from '@/store/modules/UserStore'; // 引入用户store
 import { ElMessage } from 'element-plus'; // 局部引入 ElMessage
 
 const VITE_APP_API_URL_PREFIX = import.meta.env.VITE_APP_API_URL_PREFIX;

@@ -2,7 +2,7 @@
 
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { constantRoutes } from '@/router/routers';
-import { useUserStore } from '@/store/modules/user';
+import { useUserStore } from '@/store/modules/UserStore';
 
 const router = createRouter({
   history: createWebHashHistory(),

@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { User, Lock } from '@element-plus/icons-vue';
-import { useUserStore } from '@/store/modules/user';
+import { useUserStore } from '@/store/modules/UserStore';
 import type { LoginForm } from '@/api/user/type';
 import { ElNotification, FormInstance } from 'element-plus';
 import router from '@/router'; // 正确导入 router 实例

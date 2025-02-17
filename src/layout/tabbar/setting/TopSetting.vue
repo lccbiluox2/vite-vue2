@@ -25,6 +25,9 @@
 import { ref, inject } from 'vue';
 import { useLayoutSettingStore } from '@/store/modules/setting'; // 引入Pinia store
 import { Refresh, FullScreen } from '@element-plus/icons-vue'; // 假设使用Element Plus图标
+import { useUserStore } from '@/store/modules/UserStore';
+
+const userStore = useUserStore();
 
 // 获取全局事件总线或通过其他方式获取通信方法
 const layoutSettingStore = useLayoutSettingStore();
@@ -47,8 +50,9 @@ function toggleFullScreen() {
 }
 
 function logout() {
-  console.log('退出登录');
+  console.log('退出登录，准备向服务器发送请求');
   // 执行退出登录的逻辑
+  userStore.logout();
 }
 
 function signOut() {

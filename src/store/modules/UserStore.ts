@@ -1,9 +1,8 @@
-// src/store/modules/user.ts
-
 import { defineStore } from 'pinia';
 import { reqLogin, reqUserInfo } from '@/api/user/index'; // 导入获取用户信息的API
 import type { LoginForm } from '@/api/user/type';
 import { constantRoutes } from '@/router/routers';
+import { setToken, getToken, removeToken } from '@/utils/token/TokenUtils'; // 引入新的token工具函数
 
 interface UserState {
     token: string | null; // 用户唯一标识token
@@ -14,7 +13,7 @@ interface UserState {
 
 export const useUserStore = defineStore('user', {
     state: (): UserState => ({
-        token: localStorage.getItem('TOKEN') || null,
+        token: getToken() || null, // 使用getToken方法初始化token
         username: '',
         avatar: '',
         constantRoutes: [], // 初始化为空数组
@@ -33,7 +32,7 @@ export const useUserStore = defineStore('user', {
                 console.log('【存储层】 登录调用结果, result:', result);
                 if (result.code === 200) {
                     this.token = result.data.token;
-                    localStorage.setItem('TOKEN', result.data.token);
+                    setToken(result.data.token); // 使用setToken方法设置token
                     this.username = result.data.username;
                     this.avatar = result.data.avatar;
                     console.log('【存储层】 设置用户登录信息, token:', this.token,' username:',this.username,' avatar:',this.avatar);
@@ -47,12 +46,14 @@ export const useUserStore = defineStore('user', {
                 return Promise.reject(error);
             }
         },
+
         logout() {
+            console.log('【存储层】 退出登录, 清空数据');
             this.token = null;
             this.username = '';
             this.avatar = '';
             this.constantRoutes = []; // 清空路由信息
-            localStorage.removeItem('TOKEN');
+            removeToken(); // 使用removeToken方法移除token
         },
 
         async getUserInfo() {

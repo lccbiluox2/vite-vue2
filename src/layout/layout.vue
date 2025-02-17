@@ -27,7 +27,7 @@ import Logo from '@/layout/logo/logo.vue'; // 直接导入整个组件
 import Menu from '@/layout/menu/leftMenuList.vue'; // 导入菜单组件
 import Tabbar from '@/layout/tabbar/tabbar-top.vue'; // 导入菜单组件
 import MainContent from '@/layout/main/mainContent.vue'; // 导入新的内容展示组件
-import { useUserStore } from '@/store/modules/user';
+import { useUserStore } from '@/store/modules/UserStore';
 import { useRoute } from 'vue-router';
 import { useLayoutSettingStore } from '@/store/modules/setting'; // 引入自定义 store
 

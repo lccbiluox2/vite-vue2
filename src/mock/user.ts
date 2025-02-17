@@ -35,12 +35,14 @@ export default [
             const username = bodyClient.username;
             const password = bodyClient.password;
 
+            console.log('【用户登录接口】解析用户信息:', 'username:', username, 'password:', password);
             const users = createUserList();
 
             const checkUser = users.find(
                 user => user.username === username && user.password === password
             );
 
+            console.log('【用户登录接口】匹配用户信息结果, checkUser:', checkUser);
             if (!checkUser) {
                 return { code: 201, data: { message: '用户名或密码不正确' } };
             }
@@ -58,6 +60,7 @@ export default [
         url: '/user/info',
         method: 'get',
         response: () => {
+            // 这个 mock 拿不到前端给的请求头
             const users = createUserList();
             const checkUser = users.find(user => user.token === 'Admin Token');
             if (!checkUser) {
