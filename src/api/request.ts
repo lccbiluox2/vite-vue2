@@ -24,7 +24,6 @@ class RequestHttp {
 //                 console.log('【请求拦截器】准备执行请求拦截器');
                 const userStore = useUserStore(); // 获取用户store实例
                 const token = userStore.getToken; // 从store中获取token
-//                 console.log('【请求拦截器】从store中获取token:', token);
                 if(token) { // 检查 token 是否存在
                     console.log('【请求拦截器】将token设置到响应头:', token);
                     config.headers.Authorization = 'Bearer ' + token;

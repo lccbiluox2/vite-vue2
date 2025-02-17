@@ -1,17 +1,16 @@
 // src/api/type.ts
 
-// µÇÂ¼±íµ¥Êý¾ÝÀàÐÍ
 export interface LoginForm {
     username: string;
     password: string;
 }
 
-// µÇÂ¼½Ó¿Ú·µ»ØµÄÊý¾ÝÀàÐÍ
+// ï¿½ï¿½Â¼ï¿½Ó¿Ú·ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 interface DataType {
     token: string;
 }
 
-// ÓÃ»§ÐÅÏ¢Êý¾ÝÀàÐÍ
+// ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 export interface UserInfo {
     userId: number;
     avatar: string;
@@ -24,17 +23,17 @@ export interface UserInfo {
     token: string;
 }
 
-// ·þÎñÆ÷·µ»ØÓÃ»§ÐÅÏ¢Ïà¹ØµÄÊý¾ÝÀàÐÍ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 interface UserResponse {
     checkUser: UserInfo;
 }
 
-// ¶¨Òå·þÎñÆ÷·µ»ØµÄÊý¾Ý½á¹¹
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½Ý½á¹¹
 export interface UserResponseData {
     code: number;
     data: UserResponse;
 }
-// ÓÃ»§ÐÅÏ¢ÏìÓ¦Êý¾ÝÀàÐÍ
+// ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 export interface UserInfoData {
     id: number;
     username: string;
@@ -42,9 +41,9 @@ export interface UserInfoData {
     roles: string[];
 }
 
-// »ñÈ¡ÓÃ»§ÐÅÏ¢½Ó¿Ú·µ»ØµÄÊý¾ÝÀàÐÍ
+// ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ó¿Ú·ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 export interface UserResponseData {
     code: number;
     data: UserInfoData;
-    message?: string; // ¿ÉÑ¡×Ö¶Î£¬ÓÃÓÚ´íÎó»ò³É¹¦ÏûÏ¢
+    message?: string; // ï¿½ï¿½Ñ¡ï¿½Ö¶Î£ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½Ï¢
 }
