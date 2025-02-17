@@ -1,8 +1,11 @@
+// src/store/modules/UserStore.ts
+
 import { defineStore } from 'pinia';
-import { reqLogin, reqUserInfo } from '@/api/user/index'; // 导入获取用户信息的API
+import { reqLogin, reqUserInfo } from '@/api/user/userApi'; // 导入获取用户信息的API
 import type { LoginForm } from '@/api/user/type';
 import { constantRoutes } from '@/router/routers';
 import { setToken, getToken, removeToken } from '@/utils/token/TokenUtils'; // 引入新的token工具函数
+import { routerPush } from '@/utils/router/routerUtils'; // 引入路由跳转函数
 
 interface UserState {
     token: string | null; // 用户唯一标识token
@@ -54,6 +57,7 @@ export const useUserStore = defineStore('user', {
             this.avatar = '';
             this.constantRoutes = []; // 清空路由信息
             removeToken(); // 使用removeToken方法移除token
+            routerPush('/login'); // 使用routerPush进行跳转
         },
 
         async getUserInfo() {
