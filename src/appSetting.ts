@@ -1,4 +1,4 @@
-// src/AppSetting.ts
+// src/appSetting.ts
 export interface AppSetting {
     title: string;
     logo: string;
